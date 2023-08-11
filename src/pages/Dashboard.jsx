@@ -29,6 +29,7 @@ import { collections } from "../firebase/collections";
 import { listTableHeaders, mandiTableHeaders } from "../constants/metaData";
 import { getFirstElements } from "../utils/helper";
 import Banner from "../components/dashboard/Banner";
+import Card from "../components/dashboard/Cards";
 
 ChartJS.register(
   CategoryScale,
@@ -53,6 +54,7 @@ const Dashboard = () => {
       <DashboardWrapperMain>
         <div className="row" style={{ marginTop: "34px" }}>
           <Stack gap={12} sx={{ w: "100%" }}>
+            <Card />
             <h2 style={{ marginBottom: "-58px" }}>Mandi Update</h2>
             <hr style={{ marginBottom: "-47px" }}></hr>
             <MandiListing
@@ -86,12 +88,12 @@ const Dashboard = () => {
           </div>
         </div> */}
       </DashboardWrapperMain>
-      <DashboardWrapperRight>
+      {/* <DashboardWrapperRight>
         <div className="title mb">Overall</div>
         <div className="mb">
           <OverallList />
         </div>
-      </DashboardWrapperRight>
+      </DashboardWrapperRight> */}
     </DashboardWrapper>
   );
 };
@@ -126,7 +128,7 @@ const RevenueByMonthsChart = () => {
     },
     elements: {
       bar: {
-        backgroundColor: colors.orange,
+        backgroundColor: colors.primary,
         borderRadius: 20,
         borderSkipped: "bottom",
       },

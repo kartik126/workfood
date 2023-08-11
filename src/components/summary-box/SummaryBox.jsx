@@ -43,7 +43,7 @@ const SummaryBox = ({ item }) => {
                         value={item.percent}
                         strokeWidth={10}
                         styles={buildStyles({
-                            pathColor: item.percent < 50 ? colors.red : colors.purple,
+                            pathColor: item.percent < 50 ? colors.red : colors.primary,
                             trailColor: 'transparent',
                             strokeLinecap: 'round'
                         })}

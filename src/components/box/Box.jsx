@@ -4,7 +4,7 @@ import './box.scss'
 const Box = props => {
     const className = {
         box: 'box',
-        purple: props.purple && 'box-purple',
+        purple: props.yellow && 'box-purple',
         fullheight: props.fullheight && 'box-fullheight'
     }
 

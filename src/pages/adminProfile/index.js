@@ -1,6 +1,6 @@
 import React, { useEffect, useMemo } from "react";
 import Grid from "@mui/material/Grid";
-import AppLogo from "../../assets/images/appLogo.jpeg";
+import AppLogo from "../../assets/images/appLogo.png";
 import { Stack } from "@mui/material";
 import { FormProvider, RHFTextField } from "../../components/hook-form";
 import { useForm } from "react-hook-form";
@@ -89,7 +89,8 @@ function AdminProfile() {
           </FormProvider>
         </Grid>
         <Grid item xs={6}>
-          <img src={AppLogo} alt="logo" />
+          <img src={AppLogo} alt="logo" 
+            style={{ height: "125px", width: "155px", paddingLeft: "15px" }} />
         </Grid>
       </Grid>
     </>
