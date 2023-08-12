@@ -6,6 +6,7 @@ const DASHBOARD_PATH = "/dashboard/";
 export const PATH_AUTH = {
   login: path(BASE_PATH, "login"),
   forgotPassword: path(BASE_PATH, "forgotPassword"),
+  signup: path(BASE_PATH, "signup"),
 };
 
 export const PATH_DASHBOARD = {

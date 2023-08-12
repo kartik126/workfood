@@ -11,10 +11,14 @@ import {
   List,
   ListItem,
   Typography,
+  FormControl,
+  InputLabel,
+  Select,
+  MenuItem,
 } from "@mui/material";
 import React, { useEffect } from "react";
 import { FormProvider, RHFTextField } from "../../components/hook-form";
-import { useForm } from "react-hook-form";
+import { Controller, useForm } from "react-hook-form";
 import * as yup from "yup";
 import { yupResolver } from "@hookform/resolvers/yup";
 import { LoadingButton } from "@mui/lab";
@@ -29,12 +33,13 @@ import { uploadFile, updateFile } from "../../firebase/services/storage";
 import { Delete } from "@mui/icons-material";
 
 const AddNewBlog = ({ isOpen, onClose, isEdit, editBlog }) => {
-
   const initialValues = {
     title: isEdit ? editBlog?.title : "",
     content: isEdit ? editBlog?.content : "",
     tags: isEdit ? editBlog?.tags : [],
     featuredImage: null,
+    adminName: isEdit ? editBlog?.adminName : "",
+    categories: isEdit ? editBlog?.categories : [],
   };
 
   const formSchema = yup
@@ -68,6 +73,8 @@ const AddNewBlog = ({ isOpen, onClose, isEdit, editBlog }) => {
       //   "Max allowed size is 100KB",
       //   (value) => value && value.size <= 102400
       // ),
+      adminName: yup.string().required("Admin name is required"),
+      categories: yup.array().min(1, "At least one category is required"),
     })
     .strict()
     .required();
@@ -212,6 +219,35 @@ const AddNewBlog = ({ isOpen, onClose, isEdit, editBlog }) => {
             required
             margin="normal"
             fullWidth
+          />
+          <RHFTextField
+            name="adminName"
+            label="Admin Name"
+            placeholder="Admin Name"
+            required
+            margin="normal"
+            fullWidth
+          />
+          <Controller
+            name="categories"
+            control={methods.control}
+            render={({ field }) => (
+              <FormControl fullWidth margin="normal">
+                <InputLabel>Categories</InputLabel>
+                <Select
+                  {...field}
+                  multiple
+                  value={field.value}
+                  onChange={(event) => field.onChange(event.target.value)}
+                  renderValue={(selected) => selected.join(", ")}
+                >
+                  {/* Replace with your actual category options */}
+                  <MenuItem value="category1">Category 1</MenuItem>
+                  <MenuItem value="category2">Category 2</MenuItem>
+                  {/* Add more categories as needed */}
+                </Select>
+              </FormControl>
+            )}
           />
           <div style={{ marginTop: "14px" }}>
             <Stack direction="row" gap={1}>

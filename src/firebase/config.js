@@ -14,14 +14,14 @@ import { getStorage } from "firebase/storage";
 // };
 
 const firebaseConfig = {
-  apiKey: "AIzaSyBQzPIJT2TKhdR4a_okCE07kQdwMYcowAM",
-  authDomain: "farmful-16dfb.firebaseapp.com",
-  databaseURL: "https://farmful-16dfb-default-rtdb.firebaseio.com",
-  projectId: "farmful-16dfb",
-  storageBucket: "farmful-16dfb.appspot.com",
-  messagingSenderId: "594334357756",
-  appId: "1:594334357756:web:5996863aec5d8ac061df79",
-  measurementId: "G-MQ223W6MNC",
+  apiKey: "AIzaSyD-cErJHh2wAEX_wMh0POwuRN30US_LL7o",
+  authDomain: "wookfood.firebaseapp.com",
+  databaseURL: "https://wookfood-default-rtdb.firebaseio.com",
+  projectId: "wookfood",
+  storageBucket: "wookfood.appspot.com",
+  messagingSenderId: "585999414352",
+  appId: "1:585999414352:web:a89d1cbce9717f3b02cd55",
+  measurementId: "G-8X2ECK0C58",
 };
 
 const app = initializeApp(firebaseConfig);

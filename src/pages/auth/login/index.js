@@ -8,7 +8,6 @@ import {
   Container,
   Link,
 } from "@mui/material";
-import { LockOutlined } from "@mui/icons-material";
 import {
   FormProvider,
   RHFPasswordField,
@@ -23,6 +22,7 @@ import { useForm } from "react-hook-form";
 import { useToaster } from "../../../hooks";
 import { toastMessages, toastTypes } from "../../../constants/keywords";
 import { login } from "../../../firebase/services/auth";
+import PersonIcon from '@mui/icons-material/Person';
 
 const LoginSchema = Yup.object().shape({
   email: Yup.string().email().required("Email is required"),
@@ -79,7 +79,7 @@ export default function LogIn() {
         }}
       >
         <Avatar sx={{ m: 1, bgcolor: "secondary.main" }}>
-          <LockOutlined />
+          <PersonIcon />
         </Avatar>
         <Typography component="h1" variant="h5">
           Sign in
@@ -106,7 +106,17 @@ export default function LogIn() {
               id="password"
               autoComplete="current-password"
             />
-
+          <Grid container>
+            <Grid item xs>
+              <Link
+                component={NavLink}
+                to={PATH_AUTH.signup}
+                variant="body2"
+              >
+                Don't have an account ? Register
+              </Link>
+            </Grid>
+          </Grid>
             <LoadingButton
               type="submit"
               fullWidth
@@ -117,6 +127,7 @@ export default function LogIn() {
               Login
             </LoadingButton>
           </FormProvider>
+
 
           <Grid container>
             <Grid item xs>
@@ -129,8 +140,11 @@ export default function LogIn() {
               </Link>
             </Grid>
           </Grid>
+
         </Box>
+        
       </Box>
+      
     </Container>
   );
 }

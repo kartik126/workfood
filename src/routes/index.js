@@ -73,6 +73,14 @@ export default function Router() {
           ),
         },
         {
+          path: "signup",
+          element: (
+            <GuestGuard>
+              <Signup />
+            </GuestGuard>
+          ),
+        },
+        {
           path: "forgotPassword",
           element: (
             <GuestGuard>
@@ -122,5 +130,8 @@ const Listing = Loadable(lazy(() => import("../pages/listing")));
 const ForgotPassword = Loadable(
   lazy(() => import("../pages/auth/forgotPassword"))
 );
+
 const Login = Loadable(lazy(() => import("../pages/auth/login")));
+const Signup = Loadable(lazy(() => import("../pages/auth/signup")));
+
 const NotFound = Loadable(lazy(() => import("../pages/notFound")));
