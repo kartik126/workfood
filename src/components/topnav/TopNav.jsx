@@ -10,8 +10,7 @@ const TopNav = () => {
 
   return (
     <div className="topnav">
-      <UserInfo user={data.user} />
-
+      {/* <UserInfo user={data.user} /> */}
       <div className="sidebar-toggle" onClick={openSidebar}>
         <i className="bx bx-menu-alt-right"></i>
       </div>

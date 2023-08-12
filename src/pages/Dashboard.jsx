@@ -128,7 +128,7 @@ const RevenueByMonthsChart = () => {
     },
     elements: {
       bar: {
-        backgroundColor: colors.primary,
+        backgroundColor: colors.purple,
         borderRadius: 20,
         borderSkipped: "bottom",
       },

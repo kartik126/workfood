@@ -6,6 +6,7 @@ import sidebarNav from "../../configs/sidebarNav";
 import { logout } from "../../firebase/services/auth";
 import { useToaster } from "../../hooks";
 import { toastMessages, toastTypes } from "../../constants/keywords";
+import AppLogo from "../../assets/images/appLogo.png";
 
 const Sidebar = () => {
   const location = useLocation();
@@ -40,7 +41,7 @@ const Sidebar = () => {
   return (
     <div className="sidebar" style={{marginLeft:"-48px"}}>
       <div className="sidebar__logo">
-        <img src={images.logo} alt="" />
+        <img src={AppLogo} alt="" style={{width:"50%",height:'50%'}}/>
         <div className="sidebar-close" onClick={closeSidebar}>
           <i className="bx bx-x"></i>
         </div>

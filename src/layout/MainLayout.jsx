@@ -7,10 +7,10 @@ import TopNav from "../components/topnav/TopNav";
 const MainLayout = () => {
   return (
     <>
-      <Sidebar />
+      <Sidebar/>
       <div className="main">
         <div className="main__content">
-          <TopNav />
+          {/* <TopNav /> */}
           <Outlet />
         </div>
       </div>

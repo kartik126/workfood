@@ -16,26 +16,40 @@ const Card = () => {
   };
 
   return (
-    <div style={{ display: "flex", justifyContent: "center", alignItems: "center" }}>
+    <div
+      style={{
+        display: "flex",
+        justifyContent: "center",
+        alignItems: "center",
+      }}
+    >
       {data?.overall?.map((item, index) => (
         <div
           key={index}
           style={{
-            height: 200,
-            width: 200,
-            backgroundColor: colors.primary,
+            height: 120,
+            width: 240,
+            backgroundColor: index == 0 ? colors.purple: colors.white ,
             margin: 10,
-            borderRadius: 20,
-            display: "flex",
-            flexDirection: "column",
-            justifyContent: "center",
-            alignItems: "center",
+            borderRadius: 10,
             padding: 20,
             boxShadow: "0px 2px 6px rgba(0, 0, 0, 0.1)",
           }}
         >
-          <h2 style={{ fontSize: 34, marginBottom: 10 }}>{dataCounts[item.key]}</h2>
-          <span style={{ fontSize: 16 }}>{item.title}</span>
+          <p style={{ fontSize: 16, color: index !== 0 ? 'rgb(153 153 153)' : colors.white}}>{item.title}</p>
+          <div style={{display:"flex",flexDirection:"row",alignItems:"baseline",justifyContent:"space-between"}}>
+            <h1
+              style={{
+                fontSize: 38,
+                marginBottom: 10,
+                color:index !== 0 ? colors.black: colors.white,
+                fontWeight: 500,
+              }}
+            >
+              {dataCounts[item.key]}
+            </h1>
+            <p style={{color:'rgb(20,207,151)'}}>+8%</p>
+          </div>
         </div>
       ))}
     </div>
