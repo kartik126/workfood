@@ -15,8 +15,10 @@ const MandiUpdate = () => {
   const [selectedItems, setSelectedItems] = useState([]);
 
   // Hooks
-  const { data, isFetching } = useFireStore(collections.commodities);
+  const { data, isFetching } = useFireStore(collections.DomainName);
   const { toaster } = useToaster();
+
+  console.log("domaimn name",data)
 
   // Handlers
   const onSelectItems = (checked, isAll = false, id) => {
@@ -61,7 +63,7 @@ const MandiUpdate = () => {
       >
         <Box>Mandi ({data?.length || 0})</Box>
         <Button style={{ marginRight: -496 }} onClick={() => setIsOpen(true)}>
-          Add New Commodity <AddCircle />
+          Add New Domain Name <AddCircle />
         </Button>
         <AddNewCommodity isOpen={isOpen} onClose={onClose} />
         <Button

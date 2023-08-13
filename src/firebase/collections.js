@@ -9,4 +9,5 @@ export const collections = {
   BANNER: "banner",
   notifications: "notification",
   CompanyName:"CompanyName",
+  DomainName:"DomainName",
 };

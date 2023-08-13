@@ -51,44 +51,21 @@ export const mandiTableHeaders = [
     id: "createdAt",
     numeric: false,
     disablePadding: true,
-    label: "Date",
+    label: "Id",
   },
   {
-    id: "commodityName",
+    id: "CompanyName",
     numeric: false,
     disablePadding: false,
-    label: "Commodity Name",
+    label: "Company Name",
   },
   {
-    id: "mandiName",
+    id: "Email",
     numeric: false,
     disablePadding: false,
-    label: "Mandi Name",
+    label: "Email",
   },
-  {
-    id: "variety",
-    numeric: false,
-    disablePadding: false,
-    label: "Variety",
-  },
-  {
-    id: "maxPrice",
-    numeric: true,
-    disablePadding: false,
-    label: "Max Price",
-  },
-  {
-    id: "minPrice",
-    numeric: true,
-    disablePadding: false,
-    label: "Min Price",
-  },
-  {
-    id: "averagePrice",
-    numeric: true,
-    disablePadding: false,
-    label: "Avg Price",
-  },
+
 ];
 
 export const blogTableHeaders = [

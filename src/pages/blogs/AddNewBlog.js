@@ -42,46 +42,46 @@ const AddNewBlog = ({ isOpen, onClose, isEdit, editBlog }) => {
     categories: isEdit ? editBlog?.categories : [],
   };
 
-  const formSchema = yup
-    .object({
-      title: yup
-        .string("Enter valid name")
-        .trim("Enter valid name")
-        .required("Commodity name is required")
-        .min(3, "Commodity name must be at least 3 character long")
-        .max(100, "Commodity name must be at most 100 characters long"),
-      content: yup
-        .string("Enter valid name")
-        .trim("Enter valid name")
-        .required("Mandi name is required")
-        .min(3, "Mandi name must be at least 3 character long")
-        .max(10000, "Mandi name must be at most 10000 characters long"),
-      tags: yup.array(),
-      featuredImage: isEdit
-        ? yup.mixed().nullable()
-        : yup
-            .mixed()
-            .required("Image is required")
-            .test("is-valid-type", "Not a valid image type", (value) => {
-              return isValidFileType(
-                value && value.name.toLowerCase(),
-                "image"
-              );
-            }),
-      // .test(
-      //   "is-valid-size",
-      //   "Max allowed size is 100KB",
-      //   (value) => value && value.size <= 102400
-      // ),
-      adminName: yup.string().required("Admin name is required"),
-      categories: yup.array().min(1, "At least one category is required"),
-    })
-    .strict()
-    .required();
+  // const formSchema = yup
+  //   .object({
+  //     title: yup
+  //       .string("Enter valid name")
+  //       .trim("Enter valid name")
+  //       .required("Commodity name is required")
+  //       .min(3, "Commodity name must be at least 3 character long")
+  //       .max(100, "Commodity name must be at most 100 characters long"),
+  //     content: yup
+  //       .string("Enter valid name")
+  //       .trim("Enter valid name")
+  //       .required("Mandi name is required")
+  //       .min(3, "Mandi name must be at least 3 character long")
+  //       .max(10000, "Mandi name must be at most 10000 characters long"),
+  //     tags: yup.array(),
+  //     featuredImage: isEdit
+  //       ? yup.mixed().nullable()
+  //       : yup
+  //           .mixed()
+  //           .required("Image is required")
+  //           .test("is-valid-type", "Not a valid image type", (value) => {
+  //             return isValidFileType(
+  //               value && value.name.toLowerCase(),
+  //               "image"
+  //             );
+  //           }),
+  //     // .test(
+  //     //   "is-valid-size",
+  //     //   "Max allowed size is 100KB",
+  //     //   (value) => value && value.size <= 102400
+  //     // ),
+  //     adminName: yup.string().required("Admin name is required"),
+  //     categories: yup.array().min(1, "At least one category is required"),
+  //   })
+  //   .strict()
+  //   .required();
 
   const methods = useForm({
     defaultValues: initialValues,
-    resolver: yupResolver(formSchema),
+    // resolver: yupResolver(formSchema),
   });
 
   const { toaster } = useToaster();

@@ -5,7 +5,7 @@ import {
   DialogContent,
   DialogTitle,
 } from "@mui/material";
-import React from "react";
+import React, { useState } from "react";
 import { FormProvider, RHFTextField } from "../../components/hook-form";
 import { useForm } from "react-hook-form";
 import * as yup from "yup";
@@ -15,10 +15,11 @@ import { addDocument } from "../../firebase/services/addServices";
 import { collections } from "../../firebase/collections";
 import { useToaster } from "../../hooks";
 import { toastMessages, toastTypes } from "../../constants/keywords";
+import AddNewCompany from "./AddCompanyDetails";
 
 const formSchema = yup
   .object({
-    commodityName: yup
+    CompanyName: yup
       .string("Enter valid name")
       .trim("Enter valid name")
       .required("Commodity name is required")
@@ -50,13 +51,21 @@ const formSchema = yup
   .required();
 
 const AddNewCommodity = ({ isOpen, onClose }) => {
+
+    const [isAddNewCompanyOpen, setAddNewCompanyOpen] = useState(false);
+
+    const openAddNewCompany = () => {
+      setAddNewCompanyOpen(true);
+    };
+  
+    const closeAddNewCompany = () => {
+      setAddNewCompanyOpen(false);
+    };
+
   // Init
   const initialValues = {
     commodityName: "",
-    mandiName: "",
-    maxPrice: "",
-    minPrice: "",
-    averagePrice: "",
+    Email: "",
   };
 
   // States
@@ -64,7 +73,7 @@ const AddNewCommodity = ({ isOpen, onClose }) => {
   // Hooks
   const methods = useForm({
     defaultValues: initialValues,
-    resolver: yupResolver(formSchema),
+    // resolver: yupResolver(formSchema),
   });
   const { toaster } = useToaster();
 
@@ -76,24 +85,20 @@ const AddNewCommodity = ({ isOpen, onClose }) => {
     watch,
   } = methods;
 
-  const selectedMinPrice = watch("minPrice");
-  const selectedMaxPrice = watch("maxPrice");
-
-  // Handlers Method
-
   const onCloseDialog = () => {
     reset();
     onClose();
   };
 
   const onSubmitCommodity = async (formData) => {
+    openAddNewCompany();
     try {
       const res = await addDocument(
         {
           ...formData,
           createdAt: new Date(),
         },
-        collections.commodities
+        collections.DomainName
       );
       if (!res.status) {
         return toaster(
@@ -119,65 +124,21 @@ const AddNewCommodity = ({ isOpen, onClose }) => {
           methods={methods}
         >
           <RHFTextField
-            name="commodityName"
-            label="Commodity Name"
-            placeholder="Commodity Name"
+            name="CompanyName"
+            label="Company Name"
+            placeholder="Company Name"
             fullWidth
             required
             margin="normal"
           />
           <RHFTextField
-            name="mandiName"
-            label="Mandi Name"
-            placeholder="Mandi Name"
+            name="Email"
+            label="Email"
+            placeholder="Email"
             required
             margin="normal"
           />
-          <RHFTextField
-            name="variety"
-            label="Variety"
-            placeholder="Variety"
-            required
-            margin="normal"
-          />
-          <RHFTextField
-            name="maxPrice"
-            label="Max Price"
-            placeholder="Max Price"
-            type="number"
-            required
-            margin="normal"
-            InputProps={{
-              inputProps: {
-                min: selectedMinPrice ? selectedMinPrice : "",
-              },
-            }}
-          />
-          <RHFTextField
-            name="minPrice"
-            label="Min Price"
-            placeholder="Min Price"
-            type="number"
-            required
-            margin="normal"
-            InputProps={{
-              inputProps: { max: selectedMaxPrice ? selectedMaxPrice : "" },
-            }}
-          />
-          <RHFTextField
-            name="averagePrice"
-            label="Average Price"
-            placeholder="Average Price"
-            type="number"
-            required
-            margin="normal"
-            InputProps={{
-              inputProps: {
-                min: selectedMinPrice ? selectedMinPrice : "",
-                max: selectedMaxPrice ? selectedMaxPrice : "",
-              },
-            }}
-          />
+
           <br></br>
           <Button onClick={onCloseDialog}>Cancel</Button>
           <LoadingButton
@@ -186,11 +147,15 @@ const AddNewCommodity = ({ isOpen, onClose }) => {
             color="primary"
             loading={isSubmitting}
           >
-            Submit
+            Next
           </LoadingButton>
         </FormProvider>
       </DialogContent>
       <DialogActions></DialogActions>
+      <AddNewCompany
+         isOpen={isAddNewCompanyOpen}
+         onClose={closeAddNewCompany}
+      />
     </Dialog>
   );
 };

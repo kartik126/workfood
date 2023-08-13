@@ -15,9 +15,9 @@ const sidebarNav = [
   // },
   {
     link: PATH_DASHBOARD.mandi,
-    section: "mandi",
+    section: "domainName",
     icon: <i className="bx bx-line-chart"></i>,
-    text: "Mandi Update",
+    text: "Domain Name",
   },
   {
     link: PATH_DASHBOARD.listing,

@@ -30,6 +30,8 @@ export const MandiListing = (props) => {
                 variety,
                 averagePrice,
                 createdAt,
+                CompanyName,
+                Email,
               },
               index
             ) => {
@@ -64,14 +66,10 @@ export const MandiListing = (props) => {
                     scope="row"
                     padding="none"
                   >
-                    {formateFireStoreDate(createdAt)}
+                    {id}
                   </TableCell>
-                  <TableCell>{commodityName}</TableCell>
-                  <TableCell>{mandiName}</TableCell>
-                  <TableCell>{variety}</TableCell>
-                  <TableCell>{maxPrice}</TableCell>
-                  <TableCell>{minPrice}</TableCell>
-                  <TableCell>{averagePrice}</TableCell>
+                  <TableCell>{CompanyName}</TableCell>
+                  <TableCell>{Email}</TableCell>
                 </TableRow>
               );
             }
