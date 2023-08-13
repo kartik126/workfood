@@ -44,7 +44,7 @@ ChartJS.register(
 const Dashboard = () => {
   const { data, isFetching } = useFireStore(collections.commodities);
   const { data: listingData, isFetching: isLoading } = useFireStore(
-    collections.listing
+    collections.orders
   );
 
   const onUploadBanner = () => {};
@@ -55,15 +55,15 @@ const Dashboard = () => {
         <div className="row" style={{ marginTop: "34px" }}>
           <Stack gap={12} sx={{ w: "100%" }}>
             <Card />
-            <h2 style={{ marginBottom: "-58px" }}>Mandi Update</h2>
+            {/* <h2 style={{ marginBottom: "-58px" }}>Mandi Update</h2>
             <hr style={{ marginBottom: "-47px" }}></hr>
             <MandiListing
               data={data && data.length > 0 ? getFirstElements(data, 10) : []}
               headingItems={mandiTableHeaders}
               isLoading={isFetching}
               isCheckBox={false}
-            />
-            <h2 style={{ marginBottom: "-60px" }}>Listing</h2>
+            /> */}
+            <h2 style={{ marginBottom: "-60px" }}>Orders</h2>
             <hr style={{ marginBottom: "-47px" }}></hr>
             <ItemListing
               data={

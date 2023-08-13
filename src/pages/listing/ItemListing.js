@@ -50,6 +50,11 @@ export const ItemListing = (props) => {
     }
   };
 
+  const formatDate = (dateString) => {
+    const options = { day: "numeric", month: "long" };
+    return new Date(dateString).toLocaleDateString(undefined, options);
+  };
+
   return (
     <MuiTable {...props}>
       <TableBody>
@@ -59,19 +64,21 @@ export const ItemListing = (props) => {
           data.map(
             (
               {
-                phoneno,
-                date,
                 id,
-                selectedCategory,
-                selectedSubcategory,
-                min,
-                max,
+                customerName,
+                companyname,
+                day,
+                orderNo,
+                orderTiming,
                 status,
+                totalQuantity,
+                orderDate,
               },
               index
             ) => {
               const isItemSelected = isSelected(id);
               const labelId = `enhanced-table-checkbox-${index}`;
+              const formattedDate = formatDate(orderDate);
               return (
                 <TableRow
                   hover
@@ -95,38 +102,23 @@ export const ItemListing = (props) => {
                       />
                     </TableCell>
                   )}
+
                   <TableCell
                     component="th"
                     id={labelId}
                     scope="row"
                     padding="none"
                   >
-                    {phoneno ? `+91${phoneno}` : ""}
+                    {orderNo || " "}
                   </TableCell>
-                  <TableCell>{selectedCategory || ""}</TableCell>
-                  <TableCell>{formateFireStoreDate(date)}</TableCell>
+                  <TableCell>{companyname || ""}</TableCell>
                   <TableCell>
-                    {selectedSubcategory ? (
-                      <Chip
-                        label={selectedSubcategory.toUpperCase()}
-                        color="primary"
-                        size="small"
-                        variant="outlined"
-                      />
-                    ) : (
-                      ""
-                    )}
+                    {formattedDate || ""}, {day || ""}
                   </TableCell>
-                  <TableCell>{`${min}-${max}`}</TableCell>
-                  {/* <TableCell>
-                    <Button
-                      variant="contained"
-                      color="success"
-                      onClick={() => onChangeStatus(id, status)}
-                    >
-                      {status === "A" ? "DEACTIVE" : "ACTIVE"}
-                    </Button>
-                  </TableCell> */}
+                  <TableCell> {customerName ? customerName : ""}</TableCell>
+                  <TableCell>{orderTiming || " "}</TableCell>
+                  <TableCell>{status || " "}</TableCell>
+                  <TableCell>₹ {totalQuantity || " "}</TableCell>
                 </TableRow>
               );
             }

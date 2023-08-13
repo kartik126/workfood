@@ -6,14 +6,19 @@ import { collections } from "../../firebase/collections";
 const Card = () => {
   const { data: users, dataCount } = useFireStore(collections.users);
   const { dataCount: productCount } = useFireStore(collections.products);
-  const { dataCount: listingCount } = useFireStore(collections.listing);
+  const { dataCount: listingCount } = useFireStore(collections.orders);
+  const { dataCount: companyCount } = useFireStore(collections.CompanyName);
+
+
+
 
   const dataCounts = {
     users: dataCount,
-    orders: users?.flat()?.length,
-    products: productCount,
-    listing: listingCount,
+    orders: listingCount || 0,
+    products: productCount || 0,
+    listing: companyCount,
   };
+  console.log(dataCounts)
 
   return (
     <div

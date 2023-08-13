@@ -18,7 +18,8 @@ const Listing = () => {
   const [isOpen, setIsOpen] = useState(false);
 
   // Hooks
-  const { data, isFetching } = useFireStore(collections.listing);
+  const { data, isFetching } = useFireStore(collections.orders);
+  console.log("ordersssssssss fuckkkkk yeahhhh",data);
 
   const { toaster } = useToaster();
 
@@ -82,10 +83,10 @@ const Listing = () => {
           justifyContent: "space-between",
         }}
       >
-        <Box>Listing({data?.length || 0})</Box>
-        <Button style={{ marginRight: -496 }} onClick={() => setIsOpen(true)}>
+        <Box>Orders({data?.length || 0})</Box>
+        {/* <Button style={{ marginRight: -496 }} onClick={() => setIsOpen(true)}>
           Add New Category <AddCircle />
-        </Button>
+        </Button> */}
         <AddNewCategory isOpen={isOpen} onClose={onClose} />
         <Button
           onClick={onDelete}

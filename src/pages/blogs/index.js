@@ -18,6 +18,7 @@ const Blog = () => {
 
   // Hooks
   const { data, isFetching } = useFireStore(collections.blogs);
+
   const { toaster } = useToaster();
 
   // Handlers

@@ -21,9 +21,9 @@ const sidebarNav = [
   },
   {
     link: PATH_DASHBOARD.listing,
-    section: "listing",
+    section: "Orders",
     icon: <i className="bx bx-receipt"></i>,
-    text: "Listing",
+    text: "Orders",
   },
   {
     link: PATH_DASHBOARD.products,

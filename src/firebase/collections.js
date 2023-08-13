@@ -1,11 +1,12 @@
 export const collections = {
-  products: "products",
+  products: "Product",
   categories: "categories",
   users: "users",
   blogs: "Blogcontent",
   commodities: "commodities",
-  listing: "listingcontainer",
+  orders: "orders",
   productCategories: "productCategories",
   BANNER: "banner",
   notifications: "notification",
+  CompanyName:"CompanyName",
 };

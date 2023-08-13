@@ -57,7 +57,7 @@ const data = {
     },
     {
       value: "$5678",
-      title: "Listing",
+      title: "Companies",
       key: "listing",
     },
   ],

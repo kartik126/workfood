@@ -12,11 +12,6 @@ const UserInfo = ({ user }) => {
     <>
       <div className="user-info" style={{ marginLeft: "-40px" }}>
         <div className="user-info__img">
-          <img
-            style={{ height: "125px", width: "155px" }}
-            src={AppLogo}
-            alt=""
-          />
         </div>
       </div>
       {location.pathname === PATH_DASHBOARD.root && <Notification />}

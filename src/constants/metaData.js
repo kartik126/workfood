@@ -136,34 +136,47 @@ export const userTableHeaders = [
 
 export const listTableHeaders = [
   {
-    id: "phoneno",
+    id: "orderNo",
+    numeric: false,
+    disablePadding: false,
+    label: "Order No.",
+  },
+  {
+    id: "companyname",
+    numeric: false,
+    disablePadding: false,
+    label: "Company Name",
+  },
+  {
+    id: "day",
+    numeric: false,
+    disablePadding: false,
+    label: "Day",
+  },
+
+  {
+    id: "customerName",
     numeric: false,
     disablePadding: true,
-    label: "User",
+    label: "Customer Name",
   },
   {
-    id: "selectedCategory",
+    id: "orderTiming",
     numeric: false,
     disablePadding: false,
-    label: "Product Name",
+    label: "Order Timing",
   },
   {
-    id: "date",
+    id: "status",
     numeric: false,
     disablePadding: false,
-    label: "Date",
+    label: "Order Status",
   },
   {
-    id: "selectedSubcategory",
+    id: "price",
     numeric: false,
     disablePadding: false,
-    label: "Variety",
-  },
-  {
-    id: "min",
-    numeric: false,
-    disablePadding: false,
-    label: "Price Range",
+    label: "Price",
   },
   // {
   //   id: "status",
