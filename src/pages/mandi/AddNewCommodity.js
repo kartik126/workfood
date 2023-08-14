@@ -5,7 +5,7 @@ import {
   DialogContent,
   DialogTitle,
 } from "@mui/material";
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import { FormProvider, RHFTextField } from "../../components/hook-form";
 import { useForm } from "react-hook-form";
 import * as yup from "yup";
@@ -50,21 +50,10 @@ const formSchema = yup
   .strict()
   .required();
 
-const AddNewCommodity = ({ isOpen, onClose }) => {
-
-    const [isAddNewCompanyOpen, setAddNewCompanyOpen] = useState(false);
-
-    const openAddNewCompany = () => {
-      setAddNewCompanyOpen(true);
-    };
-  
-    const closeAddNewCompany = () => {
-      setAddNewCompanyOpen(false);
-    };
-
+const AddNewCommodity = ({ isOpen, onClose, openAddNewCompany }) => {
   // Init
   const initialValues = {
-    commodityName: "",
+    CompanyName: "",
     Email: "",
   };
 
@@ -91,7 +80,6 @@ const AddNewCommodity = ({ isOpen, onClose }) => {
   };
 
   const onSubmitCommodity = async (formData) => {
-    openAddNewCompany();
     try {
       const res = await addDocument(
         {
@@ -108,6 +96,7 @@ const AddNewCommodity = ({ isOpen, onClose }) => {
       }
       if (res.status) {
         toaster(toastTypes.SUCCESS, toastMessages.CREATE_COMMODITY_SUCCESS);
+        openAddNewCompany();
         onCloseDialog();
       }
     } catch (error) {
@@ -117,7 +106,7 @@ const AddNewCommodity = ({ isOpen, onClose }) => {
 
   return (
     <Dialog open={isOpen} onClose={onCloseDialog}>
-      <DialogTitle>Add Commodity Details</DialogTitle>
+      <DialogTitle>Add Domain Name</DialogTitle>
       <DialogContent>
         <FormProvider
           onSubmit={handleSubmit(onSubmitCommodity)}
@@ -135,9 +124,11 @@ const AddNewCommodity = ({ isOpen, onClose }) => {
             name="Email"
             label="Email"
             placeholder="Email"
+            fullWidth
             required
             margin="normal"
           />
+    
 
           <br></br>
           <Button onClick={onCloseDialog}>Cancel</Button>
@@ -147,15 +138,13 @@ const AddNewCommodity = ({ isOpen, onClose }) => {
             color="primary"
             loading={isSubmitting}
           >
-            Next
+            Next{" "}
           </LoadingButton>
         </FormProvider>
       </DialogContent>
       <DialogActions></DialogActions>
-      <AddNewCompany
-         isOpen={isAddNewCompanyOpen}
-         onClose={closeAddNewCompany}
-      />
+
+      {/* <AddNewCompany Open={isAddNewCompanyOpen} Close={closeAddNewCompany} /> */}
     </Dialog>
   );
 };

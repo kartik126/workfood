@@ -10,4 +10,5 @@ export const collections = {
   notifications: "notification",
   CompanyName:"CompanyName",
   DomainName:"DomainName",
+  CompanyDetails:"CompanyDetails",
 };

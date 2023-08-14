@@ -16,6 +16,8 @@ const Blog = () => {
   const [selectedItems, setSelectedItems] = useState([]);
   const [editBlog, setEditBlog] = useState(null);
 
+
+
   // Hooks
   const { data, isFetching } = useFireStore(collections.blogs);
 
@@ -30,6 +32,8 @@ const Blog = () => {
       setIsOpen(true);
     }
   };
+
+
 
   const handleDeleteBlog = async (id) => {
     if (!id) return;

@@ -49,11 +49,13 @@ const formSchema = yup
   .strict()
   .required();
 
-const AddNewCompany = ({ isOpen, onClose }) => {
+const AddNewCompany = ({ Open, Close }) => {
   // Init
   const initialValues = {
-    commodityName: "",
-    Email: "",
+    CompanyName: "",
+    CompanyAddress: "",
+    CompanyLocation: "",
+    Gst: "",
   };
 
   // States
@@ -73,9 +75,9 @@ const AddNewCompany = ({ isOpen, onClose }) => {
     watch,
   } = methods;
 
-  const onCloseDialog = () => {
+  const CloseDialog = () => {
     reset();
-    onClose();
+    Close();
   };
 
   const onSubmitCommodity = async (formData) => {
@@ -86,7 +88,7 @@ const AddNewCompany = ({ isOpen, onClose }) => {
           ...formData,
           createdAt: new Date(),
         },
-        collections.DomainName
+        collections.CompanyDetails
       );
       if (!res.status) {
         return toaster(
@@ -96,7 +98,7 @@ const AddNewCompany = ({ isOpen, onClose }) => {
       }
       if (res.status) {
         toaster(toastTypes.SUCCESS, toastMessages.CREATE_COMMODITY_SUCCESS);
-        onCloseDialog();
+        CloseDialog();
       }
     } catch (error) {
       toaster(toastTypes.ERROR, toastMessages.GENERAL_ERROR);
@@ -104,8 +106,8 @@ const AddNewCompany = ({ isOpen, onClose }) => {
   };
 
   return (
-    <Dialog open={isOpen} onClose={onCloseDialog}>
-      <DialogTitle>Add Comp</DialogTitle>
+    <Dialog open={Open}>
+      <DialogTitle>Add Company details</DialogTitle>
       <DialogContent>
         <FormProvider
           onSubmit={handleSubmit(onSubmitCommodity)}
@@ -120,22 +122,39 @@ const AddNewCompany = ({ isOpen, onClose }) => {
             margin="normal"
           />
           <RHFTextField
-            name="Email"
-            label="Email"
-            placeholder="Email"
+            name="CompanyAddress"
+            label="Company address"
+            placeholder="Company address"
+            fullWidth
+            required
+            margin="normal"
+          />
+          <RHFTextField
+            name="CompanyLocation"
+            label="Google link of the location"
+            placeholder="Google link of the location"
+            fullWidth
+            required
+            margin="normal"
+          />
+          <RHFTextField
+            name="Gst"
+            label="GST no for the address"
+            placeholder="GST no for the address"
+            fullWidth
             required
             margin="normal"
           />
 
           <br></br>
-          <Button onClick={onCloseDialog}>Cancel</Button>
+          <Button onClick={CloseDialog}>Cancel</Button>
           <LoadingButton
             type="submit"
             variant="contained"
             color="primary"
             loading={isSubmitting}
           >
-            Next
+            Finsish
           </LoadingButton>
         </FormProvider>
       </DialogContent>

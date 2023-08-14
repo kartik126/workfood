@@ -8,11 +8,14 @@ import { mandiTableHeaders } from "../../constants/metaData";
 import AddNewCommodity from "./AddNewCommodity";
 import { deleteDocument } from "../../firebase/services/deleteServices";
 import { toastMessages, toastTypes } from "../../constants/keywords";
+import AddNewCompany from "./AddCompanyDetails";
 
 const MandiUpdate = () => {
   // States
   const [isOpen, setIsOpen] = useState(false);
   const [selectedItems, setSelectedItems] = useState([]);
+  const [isAddNewCompanyOpen, setAddNewCompanyOpen] = useState(false);
+
 
   // Hooks
   const { data, isFetching } = useFireStore(collections.DomainName);
@@ -31,6 +34,14 @@ const MandiUpdate = () => {
         ? setSelectedItems((prev) => [...prev, id])
         : setSelectedItems((prev) => prev.filter((item) => item !== id));
     }
+  };
+
+  const openAddNewCompany = () => {
+    setAddNewCompanyOpen(true);
+  };
+
+  const closeAddNewCompany = () => {
+    setAddNewCompanyOpen(false);
   };
 
   const onClose = () => {
@@ -65,7 +76,8 @@ const MandiUpdate = () => {
         <Button style={{ marginRight: -496 }} onClick={() => setIsOpen(true)}>
           Add New Domain Name <AddCircle />
         </Button>
-        <AddNewCommodity isOpen={isOpen} onClose={onClose} />
+        <AddNewCommodity isOpen={isOpen} onClose={onClose} openAddNewCompany={openAddNewCompany}/>
+        <AddNewCompany Open={isAddNewCompanyOpen} Close={closeAddNewCompany} />
         <Button
           variant="contained"
           disabled={!selectedItems.length}
