@@ -1,5 +1,8 @@
 import images from "./images";
-
+import PlaylistAddCheckCircleRoundedIcon from '@mui/icons-material/PlaylistAddCheckCircleRounded';
+import AccountCircleRoundedIcon from '@mui/icons-material/AccountCircleRounded';
+import CategoryRoundedIcon from '@mui/icons-material/CategoryRounded';
+import ApartmentRoundedIcon from '@mui/icons-material/ApartmentRounded';
 const data = {
   user: {
     name: "User",
@@ -44,21 +47,25 @@ const data = {
       value: "300K",
       title: "Orders",
       key: "orders",
+      icon:<PlaylistAddCheckCircleRoundedIcon/>
     },
     {
       value: "9.876K",
       title: "Users",
       key: "users",
+      icon:<AccountCircleRoundedIcon/>
     },
     {
       value: "1.234K",
       title: "Products",
       key: "products",
+      icon:<CategoryRoundedIcon/>
     },
     {
       value: "$5678",
       title: "Companies",
       key: "listing",
+      icon:<ApartmentRoundedIcon/>
     },
   ],
   revenueByChannel: [

@@ -9,16 +9,13 @@ const Card = () => {
   const { dataCount: listingCount } = useFireStore(collections.orders);
   const { dataCount: companyCount } = useFireStore(collections.CompanyName);
 
-
-
-
   const dataCounts = {
     users: dataCount,
     orders: listingCount || 0,
     products: productCount || 0,
     listing: companyCount,
   };
-  console.log(dataCounts)
+  console.log(dataCounts);
 
   return (
     <div
@@ -34,26 +31,53 @@ const Card = () => {
           style={{
             height: 120,
             width: 240,
-            backgroundColor: index == 0 ? colors.purple: colors.white ,
+            backgroundColor: index == 0 ? colors.purple : colors.white,
             margin: 10,
             borderRadius: 10,
             padding: 20,
             boxShadow: "0px 2px 6px rgba(0, 0, 0, 0.1)",
           }}
         >
-          <p style={{ fontSize: 16, color: index !== 0 ? 'rgb(153 153 153)' : colors.white}}>{item.title}</p>
-          <div style={{display:"flex",flexDirection:"row",alignItems:"baseline",justifyContent:"space-between"}}>
+          <div
+            style={{
+              display: "flex",
+              alignItems: "center",
+              justifyContent: "space-between",
+            }}
+          >
+            <p
+              style={{
+                fontSize: 16,
+                color: index !== 0 ? "rgb(153 153 153)" : colors.white,
+              }}
+            >
+              {item.title}
+            </p>
+            <p
+              style={{ color: index !== 0 ? "rgb(26, 83, 129)" : colors.white }}
+            >
+              {item.icon}
+            </p>
+          </div>
+          <div
+            style={{
+              display: "flex",
+              flexDirection: "row",
+              alignItems: "baseline",
+              justifyContent: "space-between",
+            }}
+          >
             <h1
               style={{
                 fontSize: 38,
                 marginBottom: 10,
-                color:index !== 0 ? colors.black: colors.white,
+                color: index !== 0 ? 'rgb(26, 83, 129)' : colors.white,
                 fontWeight: 500,
               }}
             >
               {dataCounts[item.key]}
             </h1>
-            <p style={{color:'rgb(20,207,151)'}}>+8%</p>
+            <p style={{ color: "rgb(20,207,151)" }}>+8%</p>
           </div>
         </div>
       ))}

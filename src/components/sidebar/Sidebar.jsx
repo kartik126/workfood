@@ -39,9 +39,13 @@ const Sidebar = () => {
   };
 
   return (
-    <div className="sidebar" style={{marginLeft:"-48px"}}>
-      <div className="sidebar__logo">
-        <img src={AppLogo} alt="" style={{width:"50%",height:'50%'}}/>
+    <div className="sidebar" style={{ marginLeft: "-48px" }}>
+      <div className="sidebar__logo" style={{padding:"20px 0"}}>
+        <img
+          src={AppLogo}
+          alt=""
+          style={{ width: "25%", height: "100%", borderRadius: "100%" }}
+        />
         <div className="sidebar-close" onClick={closeSidebar}>
           <i className="bx bx-x"></i>
         </div>

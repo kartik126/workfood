@@ -105,7 +105,7 @@ const AddNewCompany = ({ isOpen, onClose }) => {
 
   return (
     <Dialog open={isOpen} onClose={onCloseDialog}>
-      <DialogTitle>Add Commodity Details</DialogTitle>
+      <DialogTitle>Add Comp</DialogTitle>
       <DialogContent>
         <FormProvider
           onSubmit={handleSubmit(onSubmitCommodity)}
